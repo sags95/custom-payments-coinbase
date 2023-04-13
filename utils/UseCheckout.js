@@ -1,10 +1,9 @@
-import { useRouter } from 'next/navigation';
 
 
 export default async function UseCheckout(chargeCode) {
 
     try {
-        const router = useRouter();
+        
 
         //Call API to fetch Coinbase checkout details to populate cart
         const customerData = await fetch(`${process.env.HOST}/api/checkout/details?charge=${chargeCode}`);
@@ -38,8 +37,9 @@ export default async function UseCheckout(chargeCode) {
         const paymentData = await payment.json()
         console.log(paymentData)
 
-        //Navigate to order confirmation
-        router.replace('/confirmation')
+        return paymentData;
+
+    
 
     } catch (e) {
         console.log(e)

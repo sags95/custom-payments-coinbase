@@ -61,22 +61,22 @@ export default function Cart({ checkoutId }) {
                                     <dl className="space-y-0.5 text-base dark:text-white-500">
                                         <div className="flex justify-between">
                                             <dt>Subtotal</dt>
-                                            <dd>${cart.cartData.sub_total}</dd>
+                                            <dd>${cart.cartData.sub_total.toFixed(2)}</dd>
                                         </div>
 
                                         <div className="flex justify-between">
                                             <dt>Tax</dt>
-                                            <dd>${cart.cartData.tax_total}</dd>
+                                            <dd>${cart.cartData.tax_total.toFixed(2)}</dd>
                                         </div>
 
                                         <div className="flex justify-between">
                                             <dt>Discount</dt>
-                                            <dd>${cart.cartData.discount_total}</dd>
+                                            <dd>${cart.cartData.discount_total.toFixed(2)}</dd>
                                         </div>
 
                                         <div className="flex justify-between !text-base font-medium">
                                             <dt>Total</dt>
-                                            <dd>${cart.cartData.grand_total}</dd>
+                                            <dd>${cart.cartData.grand_total.toFixed(2)}</dd>
                                         </div>
                                     </dl>
 

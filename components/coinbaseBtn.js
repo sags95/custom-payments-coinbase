@@ -5,8 +5,10 @@ import { useEffect, useState } from 'react';
 import CoinbaseCommerceButton from 'react-coinbase-commerce';
 import 'react-coinbase-commerce/dist/coinbase-commerce-button.css';
 import UseCheckout from '@/utils/UseCheckout';
+import { useRouter } from 'next/navigation';
 
 export default function CoinbaseBtn({ cart }) {
+    const router = useRouter();
  
     const [checkoutId, setCheckoutId] = useState(null)
 
@@ -34,7 +36,10 @@ export default function CoinbaseBtn({ cart }) {
            
                
                 onChargeSuccess={(async (e) => {
-                    UseCheckout(e.code);
+                    UseCheckout(e.code).then(() => {
+                            //Navigate to order confirmation
+                            router.push('/confirmation')
+                    })
                 })
                 }
 
