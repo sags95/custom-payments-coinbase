@@ -1,4 +1,4 @@
-
+'use client'
 
 import swell from 'swell-js'
 import { useEffect, useState } from 'react';
@@ -35,7 +35,7 @@ export default function CoinbaseBtn({ cart }) {
                 checkoutId={checkoutId}
            
                
-                onChargeSuccess={(async (e) => {
+                onChargeSuccess={((e) => {
                     UseCheckout(e.code).then(() => {
                             //Navigate to order confirmation
                             router.push('/confirmation')

@@ -1,7 +1,11 @@
 'use client'
 
 import { useCartActions } from "@/utils/cartContext";
+import { useState } from "react";
 export default function ProductCard({ productId, productName, productPrice, productDesc, productImg, productMeta }) {
+
+  const [buttonText, setButtonText] = useState("Add to Cart");
+
   const {addProduct} = useCartActions();
 
   const handleAddProduct = () => {
@@ -9,7 +13,14 @@ export default function ProductCard({ productId, productName, productPrice, prod
     const quantity = 1
 
     addProduct(product, quantity);
+
+    setButtonText("Product Added!");
+    setTimeout(() => {
+      setButtonText("Add to Cart")
+    }, 2000)
   }
+
+
    
     return (
         <div className="group relative block overflow-hidden">
@@ -38,7 +49,7 @@ export default function ProductCard({ productId, productName, productPrice, prod
               className="block w-full rounded bg-red-400 p-4 text-sm font-medium transition hover:bg-red-500"
               onClick={handleAddProduct}
             >
-              Add to Cart
+              {buttonText}
             </button>
           </div>
         </div>

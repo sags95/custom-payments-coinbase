@@ -1,9 +1,11 @@
 
 import {ShoppingBagIcon, UserIcon, MagnifyingGlassIcon, Bars3Icon} from '@heroicons/react/24/outline'
 
+
 import Link from 'next/link';
 
 export default function Navbar() {
+
     return (
         <header aria-label="Site Header" className="border-b border-gray-100">
             <div
