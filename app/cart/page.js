@@ -1,21 +1,15 @@
 'use client'
 
-import { useEffect, useState } from "react"
-import swell from 'swell-js'
+
 import ProductListItem from "@/components/productListItem";
 import CoinbaseBtn from "@/components/coinbaseBtn";
-import { useCart, useCartDispatch } from "@/utils/cartContext";
+import { useCart } from "@/utils/cartContext";
 
 export default function Cart({ checkoutId }) {
 
 
     const cart = useCart();
     console.log(cart);
-
-
-    if (!cart){
-        return (<></>)
-    }
 
     if (cart === undefined) {
         return(<></>)
@@ -93,7 +87,7 @@ export default function Cart({ checkoutId }) {
             </section>
 
         )
-    } else if ( cart.items.length === 0) {
+    } else if ( cart.items.length === 0 || !cart) {
         return (
             <div className="flex flex-col mx-auto max-w-screen-xl h-screen px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                 <div className="mx-auto max-w-3xl max-h-full">
