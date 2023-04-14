@@ -4,39 +4,30 @@ import { useEffect, useState } from "react"
 import swell from 'swell-js'
 import ProductListItem from "@/components/productListItem";
 import CoinbaseBtn from "@/components/coinbaseBtn";
+import { useCart, useCartDispatch } from "@/utils/cartContext";
 
 export default function Cart({ checkoutId }) {
-    const [cart, setCart] = useState({
-        isLoaded: false,
-        isEmpty: false,
-        cartData: {}
-    });
 
-    useEffect(() => {
-        const getCart = async () => {
-            const res = await swell.cart.get();
-            if (res != null) {
-                setCart({
-                    isLoaded: true,
-                    cartData: res
-                })
-                console.log(res);
-            } else {
-                setCart({
-                    isEmpty: true
-                })
-            }
-        }
-        getCart()
-    }, [])
 
-    if (cart.isLoaded && cart.cartData.items.length != 0) {
+    const cart = useCart();
+    console.log(cart);
 
-        const renderCartItems = cart.cartData.items.map((item => <>
+
+    if (!cart){
+        return (<></>)
+    }
+
+    if (cart === undefined) {
+        return(<></>)
+    }
+    if (cart.items.length != 0) {
+
+        const renderCartItems = cart.items.map((item => <>
             <ProductListItem
                 productName={item.product.name}
                 productImage={item.product.images[0].file.url}
                 quantity={item.quantity}
+                itemId={item.id}
             />
 
         </>))
@@ -61,29 +52,29 @@ export default function Cart({ checkoutId }) {
                                     <dl className="space-y-0.5 text-base dark:text-white-500">
                                         <div className="flex justify-between">
                                             <dt>Subtotal</dt>
-                                            <dd>${cart.cartData.sub_total.toFixed(2)}</dd>
+                                            <dd>${cart.sub_total.toFixed(2)}</dd>
                                         </div>
 
                                         <div className="flex justify-between">
                                             <dt>Tax</dt>
-                                            <dd>${cart.cartData.tax_total.toFixed(2)}</dd>
+                                            <dd>${cart.tax_total.toFixed(2)}</dd>
                                         </div>
 
                                         <div className="flex justify-between">
                                             <dt>Discount</dt>
-                                            <dd>${cart.cartData.discount_total.toFixed(2)}</dd>
+                                            <dd>${cart.discount_total.toFixed(2)}</dd>
                                         </div>
 
                                         <div className="flex justify-between !text-base font-medium">
                                             <dt>Total</dt>
-                                            <dd>${cart.cartData.grand_total.toFixed(2)}</dd>
+                                            <dd>${cart.grand_total.toFixed(2)}</dd>
                                         </div>
                                     </dl>
 
 
                                     <div className="flex justify-end gap-8">
                                         <div className="block rounded dark:bg-sky-400 px-5 py-3 text-sm text-gray-100 transition dark:hover:bg-sky-500">
-                                        <CoinbaseBtn cart={cart.cartData} />
+                                        <CoinbaseBtn cart={cart} />
                                         </div>
 
                                         <a
@@ -102,7 +93,7 @@ export default function Cart({ checkoutId }) {
             </section>
 
         )
-    } else if (cart.isLoaded && cart.items.length === 0 || cart.isEmpty === true) {
+    } else if ( cart.items.length === 0) {
         return (
             <div className="flex flex-col mx-auto max-w-screen-xl h-screen px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                 <div className="mx-auto max-w-3xl max-h-full">

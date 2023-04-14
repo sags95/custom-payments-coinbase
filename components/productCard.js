@@ -1,18 +1,16 @@
 'use client'
 
-import swell from 'swell-js'
-import { useRouter } from 'next/navigation';
-import { useContext } from 'react';
-import { CartContext } from '@/utils/CartContext';
+import { useCartActions } from "@/utils/cartContext";
 export default function ProductCard({ productId, productName, productPrice, productDesc, productImg, productMeta }) {
-   
-    async function addToCart(){
-        
-       const res = await swell.cart.addItem(productId);
-       console.log(res);
-    }
-   
+  const {addProduct} = useCartActions();
 
+  const handleAddProduct = () => {
+    const product = productId;
+    const quantity = 1
+
+    addProduct(product, quantity);
+  }
+   
     return (
         <div className="group relative block overflow-hidden">
         <img
@@ -38,7 +36,7 @@ export default function ProductCard({ productId, productName, productPrice, prod
 
             <button
               className="block w-full rounded bg-red-400 p-4 text-sm font-medium transition hover:bg-red-500"
-              onClick={addToCart}
+              onClick={handleAddProduct}
             >
               Add to Cart
             </button>
