@@ -21,8 +21,6 @@ export async function POST(request) {
                 amount: body.grand_total,
                 currency: 'USD'
             },
-            redirect_url: `${process.env.NEXT_PUBLIC_HOST}/confirmation`,
-            success_url: `${process.env.NEXT_PUBLIC_HOST}/confirmation`,
             requested_info: ['name', 'email']
         })
     }

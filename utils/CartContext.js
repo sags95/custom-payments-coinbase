@@ -1,9 +1,8 @@
 'use client'
 
 import { createContext, useReducer, useContext, useEffect } from "react";
-import swell from 'swell-js'
+import swell from './swellClient'
 
-swell.init(process.env.NEXT_PUBLIC_SWELL_STORE_ID, process.env.NEXT_PUBLIC_SWELL_PK);
 
 export const CartContext = createContext(null);
 
@@ -17,7 +16,6 @@ export function CartProvider({ children }) {
     useEffect(() => {
         const fetchCart = async () => {
             try {
-                //Fetch cart
                 const res = await swell.cart.get();
                 dispatch({
                     type: 'loaded',
@@ -29,7 +27,7 @@ export function CartProvider({ children }) {
 
         }
         fetchCart()
-    }, [])
+    }, [dispatch])
 
     return (
         <CartContext.Provider value={cart}>
@@ -45,6 +43,8 @@ function cartReducer(cart, action) {
       case "loaded":
       case "productAdded":
       case "productRemoved":
+        case 'orderSubmitted':
+            case 'cartUpdated':
         return (action.data)
       default:
         return cart;
@@ -69,6 +69,7 @@ export function useCartActions(){
                 quantity: quantity
             });
             dispatch({type: 'productAdded', data: res})
+            return res;
         } catch(e){
             console.log(e)
         }
@@ -78,11 +79,32 @@ export function useCartActions(){
         try {
             const res = await swell.cart.removeItem(itemId);
             dispatch({type: 'productRemoved', data: res})
+            return res;
         } catch (e){
             console.log(e)
         }
     }
 
-    return {addProduct, removeProduct}
+    const checkout = async () => {
+        try {
+            const res = await swell.cart.submitOrder();
+            dispatch({type: 'orderSubmitted', data: res})
+            return res;
+        } catch (e){
+            console.log(e)
+        }
+    }
+
+    const updateCart = async (params) => {
+        try {
+            const res = await swell.cart.update(params);
+            dispatch({type: 'cartUpdated', data: res});
+            return res;
+        } catch (e){
+            console.log(e)
+        }
+    }
+
+    return {addProduct, removeProduct, checkout, updateCart}
 }
 

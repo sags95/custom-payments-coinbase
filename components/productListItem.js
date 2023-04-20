@@ -30,6 +30,7 @@ export default function ProductListItem({productName, productImage, quantity, it
                 <label htmlFor="Line1Qty" className="sr-only"> Quantity </label>
 
                 <input
+                  readOnly
                   type="number"
                   min="1"
                   value={quantity}

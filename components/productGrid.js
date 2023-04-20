@@ -1,41 +1,27 @@
-'use client'
 
 import ProductCard from "./productCard"
-import { useEffect, useState } from "react"
-import swell from 'swell-js'
+import { fetchProducts } from "@/utils/fetchProducts"
 
-export default function ProductGrid({categoryId}){
-    const [products, setProducts] = useState([])
-    const [category, setCategory] = useState([])
+export default async function ProductGrid({categoryId, limit}){
+    const { products, category } = await fetchProducts(categoryId, limit);
 
-    const renderProducts = products.map((item => 
-        <>
-        <ProductCard
-        key={item.id}
-        productName={item.name}
-        productPrice={item.price}
-        productImg={item.images[0].file.url}
-        productId={item.id}
-        />
-        </>
-    ))
+    const renderProducts = products.map((item, index) => {
+        const productImg = item.images && item.images[0] && item.images[0].file.url
+          ? item.images[0].file.url
+          : 'https://via.placeholder.com/400x400'; 
+      
+        return (
+          <ProductCard
+            key={index}
+            productName={item.name}
+            productPrice={item.price}
+            productImg={productImg}
+            productId={item.id}
+          />
+        );
+      });
 
 
-    useEffect(() => {
-        const getProducts = async () => {
-            const res = await swell.products.list({
-                limit: 4,
-                category: categoryId
-            });
-            const products = res.results
-            setProducts(products)
-
-            const category = await swell.categories.get(categoryId);
-            setCategory(category)
-
-        }
-        getProducts()
-    }, [])
 
     if (products) {
         return (

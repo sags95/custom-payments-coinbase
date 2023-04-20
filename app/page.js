@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
     <ProductCollectionGrid/>
-    <ProductGrid categoryId='coffee' />
+    <ProductGrid categoryId={'coffee'} limit={4}/>
     </>
   )
 }

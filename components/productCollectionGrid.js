@@ -1,6 +1,12 @@
+import { fetchCategories } from "@/utils/fetchCategories"
 import Image from "next/image"
 
-export default function ProductCollectionGrid() {
+export default async function ProductCollectionGrid() {
+    const categories = await fetchCategories();
+
+    //TODO: Render list of actual categories
+    
+    console.log(categories)
     return (
         <section>
             <div className="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
