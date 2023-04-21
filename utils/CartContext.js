@@ -40,16 +40,16 @@ export function CartProvider({ children }) {
 
 function cartReducer(cart, action) {
     switch (action.type) {
-      case "loaded":
-      case "productAdded":
-      case "productRemoved":
+        case "loaded":
+        case "productAdded":
+        case "productRemoved":
         case 'orderSubmitted':
-            case 'cartUpdated':
-        return (action.data)
-      default:
-        return cart;
+        case 'cartUpdated':
+            return (action.data)
+        default:
+            return cart;
     }
-  }
+}
 
 export function useCart() {
     return useContext(CartContext);
@@ -59,7 +59,7 @@ export function useCartDispatch() {
     return useContext(CartDispatchContext);
 }
 
-export function useCartActions(){
+export function useCartActions() {
     const dispatch = useCartDispatch();
 
     const addProduct = async (productId, quantity) => {
@@ -68,9 +68,9 @@ export function useCartActions(){
                 product_id: productId,
                 quantity: quantity
             });
-            dispatch({type: 'productAdded', data: res})
+            dispatch({ type: 'productAdded', data: res })
             return res;
-        } catch(e){
+        } catch (e) {
             console.log(e)
         }
     }
@@ -78,9 +78,9 @@ export function useCartActions(){
     const removeProduct = async (itemId) => {
         try {
             const res = await swell.cart.removeItem(itemId);
-            dispatch({type: 'productRemoved', data: res})
+            dispatch({ type: 'productRemoved', data: res })
             return res;
-        } catch (e){
+        } catch (e) {
             console.log(e)
         }
     }
@@ -88,9 +88,9 @@ export function useCartActions(){
     const checkout = async () => {
         try {
             const res = await swell.cart.submitOrder();
-            dispatch({type: 'orderSubmitted', data: res})
+            dispatch({ type: 'orderSubmitted', data: res })
             return res;
-        } catch (e){
+        } catch (e) {
             console.log(e)
         }
     }
@@ -98,13 +98,13 @@ export function useCartActions(){
     const updateCart = async (params) => {
         try {
             const res = await swell.cart.update(params);
-            dispatch({type: 'cartUpdated', data: res});
+            dispatch({ type: 'cartUpdated', data: res });
             return res;
-        } catch (e){
+        } catch (e) {
             console.log(e)
         }
     }
 
-    return {addProduct, removeProduct, checkout, updateCart}
+    return { addProduct, removeProduct, checkout, updateCart }
 }
 

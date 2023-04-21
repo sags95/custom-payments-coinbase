@@ -1,5 +1,5 @@
 
-import {ShoppingBagIcon, UserIcon, MagnifyingGlassIcon, Bars3Icon} from '@heroicons/react/24/outline'
+import { ShoppingBagIcon, UserIcon, MagnifyingGlassIcon, Bars3Icon } from '@heroicons/react/24/outline'
 
 
 import Link from 'next/link';
@@ -13,11 +13,11 @@ export default function Navbar() {
             >
                 <div className="flex items-center gap-4">
                     <button type="button" className="p-2 lg:hidden">
-                        <Bars3Icon className='h-4 w-4'/>
+                        <Bars3Icon className='h-4 w-4' />
                     </button>
 
                     <Link href="#" className="flex" >
-                        
+
                         <span className="sr-only">Logo</span>
                         <h1>Coffee Shop</h1>
                     </Link>
@@ -62,13 +62,13 @@ export default function Navbar() {
                             className="flex items-center divide-x divide-gray-100 border-x border-gray-100"
                         >
                             <span
-                                
+
                             >
                                 <Link
                                     href="/cart"
                                     className="block border-b-4 border-transparent p-6 hover:border-red-700"
                                 >
-                                    <ShoppingBagIcon className="h-4 w-4"/>
+                                    <ShoppingBagIcon className="h-4 w-4" />
 
                                     <span className="sr-only">Cart</span>
                                 </Link>
@@ -79,7 +79,7 @@ export default function Navbar() {
                                     href="/account"
                                     className="block border-b-4 border-transparent p-6 hover:border-red-700"
                                 >
-                                    <UserIcon className='h-w w-4'/>
+                                    <UserIcon className='h-w w-4' />
 
                                     <span className="sr-only"> Account </span>
                                 </a>
@@ -90,7 +90,7 @@ export default function Navbar() {
                                     href="/search"
                                     className="block border-b-4 border-transparent p-6 hover:border-red-700"
                                 >
-                                  <MagnifyingGlassIcon className='h-4 w-4'/>
+                                    <MagnifyingGlassIcon className='h-4 w-4' />
 
                                     <span className="sr-only"> Search </span>
                                 </a>

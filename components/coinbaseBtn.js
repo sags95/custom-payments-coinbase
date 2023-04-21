@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 
 export default function CoinbaseBtn({ cart }) {
     const router = useRouter();
- 
+
     const [coinbaseCheckoutId, setCoinbaseCheckoutId] = useState(null)
     const [completeCheckout, paymentData, checkoutId, error] = useCoinbaseCheckout();
 
@@ -28,9 +28,9 @@ export default function CoinbaseBtn({ cart }) {
     useEffect(() => {
         if (paymentData) {
             const id = checkoutId;
-          router.push(`/confirmation/${id}`);
+            router.push(`/confirmation/${id}`);
         }
-      }, [paymentData, router, checkoutId]);
+    }, [paymentData, router, checkoutId]);
 
 
 
@@ -43,10 +43,10 @@ export default function CoinbaseBtn({ cart }) {
                 onChargeSuccess={async (e) => {
                     try {
                         await completeCheckout(e.code)
-                    } catch (e){
+                    } catch (e) {
                         console.log(`Error: ${e} with ${e.code}`)
                     }
-                    
+
                 }
                 }
 
