@@ -17,7 +17,7 @@ export default async function OrderConfirmation({params}) {
         }).format(dateCreated)
 
         return (
-            <div className="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center">
+            <div className="bg-gray-100 dark:bg-gray-900 min-h-screen flex">
       <div className="container mx-auto p-6">
         <div className="bg-white dark:bg-gray-800 shadow-md rounded p-6 md:max-w-md lg:max-w-lg xl:max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-200">
