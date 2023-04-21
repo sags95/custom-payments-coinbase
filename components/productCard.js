@@ -37,11 +37,6 @@ export default function ProductCard({ productId, productName, productPrice, prod
       />
 
         <div className="relative border border-gray-100 dark:bg-zinc-900 p-6">
-          <span
-            className="whitespace-nowrap bg-red-400 px-3 py-1.5 text-xs font-medium"
-          >
-            New
-          </span>
       
           <h3 className="mt-4 text-lg font-medium text-gray-900 dark:text-white">{productName}</h3>
       
