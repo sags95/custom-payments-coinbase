@@ -46,6 +46,8 @@ function cartReducer(cart, action) {
         case 'orderSubmitted':
         case 'cartUpdated':
             return (action.data)
+        case 'cartCleared':
+            return null;
         default:
             return cart;
     }
@@ -89,6 +91,7 @@ export function useCartActions() {
         try {
             const res = await swell.cart.submitOrder();
             dispatch({ type: 'orderSubmitted', data: res })
+            dispatch({type: 'cartCleared'})
             return res;
         } catch (e) {
             console.log(e)

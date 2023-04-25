@@ -13,7 +13,6 @@ export default function CoinbaseBtn({ cart }) {
     const [completeCheckout, paymentData, checkoutId, error] = useCoinbaseCheckout();
 
     useEffect(() => {
-        console.log(cart);
         const createCheckout = async () => {
             const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/checkout`, {
                 method: 'POST',

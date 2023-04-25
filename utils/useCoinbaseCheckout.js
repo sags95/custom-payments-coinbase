@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useCartActions } from './cartContext';
-import swell from './swellClient';
+
 
 export default function useCoinbaseCheckout() {
   const { checkout, updateCart } = useCartActions();

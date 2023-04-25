@@ -20,11 +20,6 @@ export default function Footer() {
                 Chat with us
               </Link>
             </p>
-            <p className="mb-2">
-              <Link href="#" className="hover:underline">
-                Send us a letter
-              </Link>
-            </p>
           </div>
           <div>
             <h3 className="font-semibold mb-4 text-lg">Learn</h3>

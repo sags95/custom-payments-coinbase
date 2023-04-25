@@ -6,8 +6,6 @@ import { useCart } from "@/utils/cartContext";
 
 export default function Cart() {
     const cart = useCart();
-
-
     if (cart === undefined) {
         return (<></>)
     }
@@ -62,12 +60,12 @@ export default function Cart() {
                                                 <CoinbaseBtn cart={cart} />
                                             </div>
 
-                                            <a
-                                                href="#"
+                                            <button
+
                                                 className="block rounded dark:bg-red-400 px-5 py-3 text-sm text-gray-100 transition dark:hover:bg-red-500"
                                             >
                                                 Checkout
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

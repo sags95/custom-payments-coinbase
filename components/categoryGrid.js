@@ -2,7 +2,7 @@ import { fetchCategories } from "@/utils/fetchCategories"
 import Image from "next/image"
 import Link from "next/link";
 
-export default async function ProductCollectionGrid() {
+export default async function CategoryGrid() {
     const categories = await fetchCategories(3);
 
     const placeholderImg = "https://via.placeholder.com/500x500?text=No+Image+Available";
@@ -10,8 +10,6 @@ export default async function ProductCollectionGrid() {
     const imgStyle = {
         objectFit: 'cover'
     }
-
-    console.log(categories)
 
     if (categories) {
         const renderItem = (category, index) => (
