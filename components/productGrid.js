@@ -27,7 +27,7 @@ export default async function ProductGrid({ categoryId, limit }) {
     return (
       <>
         <div className="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
-          <p className="lg:text-2xl sm:text-base font-bold">{category.name ?? ''}</p>
+          <p className="lg:text-2xl sm:text-base font-bold">{category?.name}</p>
           <div className="lg:grid lg:grid-cols-4 lg:gap-4 sm:col-auto sm:my-4 sm:gap-y-8">
             {renderProducts}
           </div>

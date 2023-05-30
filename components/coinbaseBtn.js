@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-import CoinbaseCommerceButton from 'react-coinbase-commerce';
-import 'react-coinbase-commerce/dist/coinbase-commerce-button.css';
+import { CoinbaseCommerceButton } from '@iofate/react-coinbase-commerce';
+import '@iofate/react-coinbase-commerce/dist/esm/index.css';
 import useCoinbaseCheckout from '@/utils/useCoinbaseCheckout';
 import { useRouter } from 'next/navigation';
 
@@ -59,7 +59,13 @@ export default function CoinbaseBtn({ cart }) {
     } else {
         return (
             <>
+       
+                <div className="block rounded dark:bg-sky-700 px-5 py-3 text-sm text-gray-100 transition dark:hover:bg-sky-700">
+                                          Buy With Crypto      
+                                            </div>
+          
             </>
+           
         )
     }
 }

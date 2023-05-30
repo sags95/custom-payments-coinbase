@@ -47,7 +47,7 @@ export default function ProductCard({ productId, productName, productPrice, prod
           className="mt-4">
 
           <button
-            className="block w-full rounded bg-red-400 p-4 text-sm font-medium transition hover:bg-red-500"
+            className="block w-full bg-red-700 p-4 text-sm font-medium transition hover:bg-red-800"
             onClick={handleAddProduct}
           >
             {buttonText}

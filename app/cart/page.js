@@ -56,13 +56,13 @@ export default function Cart() {
                                             </div>
                                         </dl>
                                         <div className="flex justify-end gap-8">
-                                            <div className="block rounded dark:bg-sky-400 px-5 py-3 text-sm text-gray-100 transition dark:hover:bg-sky-500">
+                                            <div className="block dark:bg-sky-700 px-5 py-3 text-sm text-gray-100 transition dark:hover:bg-sky-800">
                                                 <CoinbaseBtn cart={cart} />
                                             </div>
 
                                             <button
 
-                                                className="block rounded dark:bg-red-400 px-5 py-3 text-sm text-gray-100 transition dark:hover:bg-red-500"
+                                                className="block dark:bg-red-700 px-5 py-3 text-sm text-gray-100 transition dark:hover:bg-red-800"
                                             >
                                                 Checkout
                                             </button>
