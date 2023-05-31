@@ -29,13 +29,6 @@ export default function CoinbaseBtn({ cart }) {
         })
     }, [cart])
 
-    // useEffect(() => {
-    //     if (paymentData) {
-    //         const id = checkoutId;
-    //         router.push(`/confirmation/${id}`);
-    //     }
-    // }, [paymentData, router, checkoutId]);
-
     function Spinner() {
         return (
           <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
