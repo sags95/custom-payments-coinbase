@@ -1,14 +1,20 @@
 
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCartActions } from './cartContext';
 
 
-export default function useCoinbaseCheckout() {
+export default function useCoinbaseCheckout(router) {
   const { checkout, updateCart } = useCartActions();
   const [paymentData, setPaymentData] = useState(null);
   const [error, setError] = useState(null);
   const [checkoutId, setCheckoutId] = useState(null);
+
+  useEffect(() => {
+    if (checkoutId) {
+      router.push(`/confirmation/${checkoutId}`);
+    }
+  }, [checkoutId, router]);
 
   const completeCheckout = async (chargeCode) => {
     try {

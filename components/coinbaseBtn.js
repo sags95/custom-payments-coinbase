@@ -10,7 +10,7 @@ export default function CoinbaseBtn({ cart }) {
     const router = useRouter();
 
     const [coinbaseCheckoutId, setCoinbaseCheckoutId] = useState(null)
-    const [completeCheckout, paymentData, checkoutId, error] = useCoinbaseCheckout();
+    const [completeCheckout, paymentData, checkoutId, error] = useCoinbaseCheckout(router);
     const [isLoading, setIsLoading] = useState(true);
 
 
@@ -29,12 +29,12 @@ export default function CoinbaseBtn({ cart }) {
         })
     }, [cart])
 
-    useEffect(() => {
-        if (paymentData) {
-            const id = checkoutId;
-            router.push(`/confirmation/${id}`);
-        }
-    }, [paymentData, router, checkoutId]);
+    // useEffect(() => {
+    //     if (paymentData) {
+    //         const id = checkoutId;
+    //         router.push(`/confirmation/${id}`);
+    //     }
+    // }, [paymentData, router, checkoutId]);
 
     function Spinner() {
         return (
