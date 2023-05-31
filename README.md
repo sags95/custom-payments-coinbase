@@ -6,8 +6,9 @@ This is a Next.js 13 example using Swell and Coinbase Commerce. It's primarily m
 ## Getting Started
 
 - Ensure you've signed up for a [Swell](https://swell.store/signup#ph_id=185a794f7f5fd7-0594d5953bdbc8-17525635-4da900-185a794f7f6295f) store
+    - Add a handful of products and categories to your Swell store.
 - Sign up for a [Coinbase Commerce](https://www.coinbase.com/commerce#flexible-plans) account
-    - Follow the steps [here](https://docs.cloud.coinbase.com/commerce/docs/pay-button-adding#whitelist-your-website) to add your localhost url
+    - Follow the steps [here](https://docs.cloud.coinbase.com/commerce/docs/pay-button-adding#whitelist-your-website) to whitelist your localhost url
 
 Create a `.env.local` file using the `.env.template`
 
