@@ -10,7 +10,7 @@ export default function CoinbaseBtn({ cart }) {
     const router = useRouter();
 
     const [coinbaseCheckoutId, setCoinbaseCheckoutId] = useState(null)
-    const [completeCheckout, paymentData, checkoutId, error] = useCoinbaseCheckout(router);
+    const [completeCheckout] = useCoinbaseCheckout(router);
     const [isLoading, setIsLoading] = useState(true);
 
 

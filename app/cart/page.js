@@ -3,13 +3,20 @@
 import ProductListItem from "@/components/productListItem";
 import CoinbaseBtn from "@/components/coinbaseBtn";
 import { useCart } from "@/utils/cartContext";
+import { useRouter } from "next/navigation";
 
 export default function Cart() {
     const cart = useCart();
+    const router = useRouter();
+
     if (cart === undefined) {
         return (<></>)
     }
+
     if (cart != null && cart.items.length != 0) {
+        const handleCheckout = () => {
+            router.push(cart.checkout_url)
+        }
 
         const renderCartItems = cart.items.map((item, index) => {
             return (
@@ -61,8 +68,8 @@ export default function Cart() {
                                             </div>
 
                                             <button
-
                                                 className="block dark:bg-red-700 px-5 py-3 text-sm text-gray-100 transition dark:hover:bg-red-800"
+                                                onClick={handleCheckout}
                                             >
                                                 Checkout
                                             </button>
