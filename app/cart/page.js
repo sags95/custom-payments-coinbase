@@ -66,7 +66,6 @@ export default function Cart() {
                                             <div className="block dark:bg-sky-700 px-5 py-3 text-sm text-gray-100 transition dark:hover:bg-sky-800">
                                                 <CoinbaseBtn cart={cart} />
                                             </div>
-
                                             <button
                                                 className="block dark:bg-red-700 px-5 py-3 text-sm text-gray-100 transition dark:hover:bg-red-800"
                                                 onClick={handleCheckout}
